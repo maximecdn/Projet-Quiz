@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!--question: 0-->
+  <question type="category">
+    <category>
+      <text>top</text>
+    </category>
+  </question>
+  <!--question: vrai faux-->
+  <question type="truefalse">
+    <name>
+      <text>simulation vrai faux</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>vrai ou faux ??</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>le feedback general</text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>1</penalty>
+    <hidden>0</hidden>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>true</text>
+      <feedback format="html">
+        <text>feedback pour vrai</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>false</text>
+      <feedback format="html">
+        <text>feedback pour faux</text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

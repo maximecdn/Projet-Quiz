@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/top</text>
+
+    </category>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/top/numérique</text>
+
+    </category>
+  </question>
+
+<!-- question: 282600  -->
+  <question type="numerical">
+    <name>
+      <text>question 1</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>combien ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>10</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+      <tolerance>1</tolerance>
+    </answer>
+<units>
+  <unit>
+    <multiplier>1</multiplier>
+    <unit_name>m</unit_name>
+  </unit>
+</units>
+    <unitgradingtype>2</unitgradingtype>
+    <unitpenalty>0.1000000</unitpenalty>
+    <showunits>0</showunits>
+    <unitsleft>0</unitsleft>
+  </question>
+
+</quiz>

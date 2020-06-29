@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/top</text>
+
+    </category>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/top/Défaut pour EPL8EO04</text>
+
+    </category>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+        <text>$course$/top/Défaut pour EPL8EO04/calcul sur le dBm</text>
+
+    </category>
+  </question>
+
+<!-- question: 101893  -->
+  <question type="calculatedsimple">
+    <name>
+      <text>calcul d'une puissance en dBm</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider a signal with a mean power of {w} W. What is its mean power in dBm?</p><p>The dBm is a log scale power unit [10 .log(.)]. It is defined as&nbsp; the ratio of the signal power in watt (W) over a reference power of 1 mW.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>0</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>0</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+<answer fraction="100">
+    <text>10*log10({w}/0.001)</text>
+    <tolerance>0.1</tolerance>
+    <tolerancetype>2</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>1</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+    <unitgradingtype>0</unitgradingtype>
+    <unitpenalty>0.2500000</unitpenalty>
+    <showunits>3</showunits>
+    <unitsleft>0</unitsleft>
+<units>
+  <unit>
+    <multiplier>1</multiplier>
+    <unit_name>dBm</unit_name>
+  </unit>
+</units>
+<dataset_definitions>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>w</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>6.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>9.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>4.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>9.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>4.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>1.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>1.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>2.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>2.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>1.2</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+  </question>
+
+<!-- question: 101894  -->
+  <question type="calculatedsimple">
+    <name>
+      <text>calcul de la tension à partir de la puissance</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider a signal with a mean power of {p} W going through a 50 Ohm resistor. What is the voltage value at the resistor?<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>0</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>0</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+<answer fraction="100">
+    <text>sqrt({p}*50)</text>
+    <tolerance>0.1</tolerance>
+    <tolerancetype>2</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>1</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+    <unitgradingtype>1</unitgradingtype>
+    <unitpenalty>0.2500000</unitpenalty>
+    <showunits>0</showunits>
+    <unitsleft>0</unitsleft>
+<units>
+  <unit>
+    <multiplier>1</multiplier>
+    <unit_name>V</unit_name>
+  </unit>
+  <unit>
+    <multiplier>1000</multiplier>
+    <unit_name>mV</unit_name>
+  </unit>
+  <unit>
+    <multiplier>0.001</multiplier>
+    <unit_name>kV</unit_name>
+  </unit>
+</units>
+<dataset_definitions>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>p</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>5.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>4.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>4.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>7.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>8.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>8.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>3.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>4.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>5.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>2.6</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+  </question>
+
+<!-- question: 101895  -->
+  <question type="calculatedsimple">
+    <name>
+      <text>calcul puissance sinus</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider the following signal x(t)={a}.cos(2pi. {f} .t + {p}). What is the mean power of this signal?<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>0</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>0</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+<answer fraction="100">
+    <text>{a}*{a}/2+{f}*0+{p}*0</text>
+    <tolerance>0.1</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>1</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+    <unitgradingtype>0</unitgradingtype>
+    <unitpenalty>0.1000000</unitpenalty>
+    <showunits>3</showunits>
+    <unitsleft>0</unitsleft>
+<dataset_definitions>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>a</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>7.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>5.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>5.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>9.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>3.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>3.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>5.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>3.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>6.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>9.5</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>f</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>5.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>1.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>5.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>8.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>4.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>2.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>9.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>7.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>1.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>3.2</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>p</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>1.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>3.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>2.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>8.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>6.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>5.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>1.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>9.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>6.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>6.6</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+  </question>
+
+<!-- question: 101896  -->
+  <question type="calculatedsimple">
+    <name>
+      <text>rapport signal sur bruit en dB</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider a noise which has a mean power of {n}&nbsp; mW and a signal of interest&nbsp; which has a mean power of {p} mW.<br></p><p>What is the signal to noise ratio in decibels (dB)? Write also the unit.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>0</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>0</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+<answer fraction="100">
+    <text>10*log10({p}/{n})</text>
+    <tolerance>0.1</tolerance>
+    <tolerancetype>2</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>1</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<answer fraction="50">
+    <text>-10*log10({p}/{n})</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>2</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+    <unitgradingtype>1</unitgradingtype>
+    <unitpenalty>0.2500000</unitpenalty>
+    <showunits>0</showunits>
+    <unitsleft>0</unitsleft>
+<units>
+  <unit>
+    <multiplier>1</multiplier>
+    <unit_name>dB</unit_name>
+  </unit>
+</units>
+<dataset_definitions>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>p</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>95</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>10</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>86</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>87</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>76</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>66</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>97</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>57</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>43</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>n</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>8817</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>2538</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>8457</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>1622</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>3238</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>744</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>9847</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>9503</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>8728</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>5422</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+  </question>
+
+<!-- question: 101897  -->
+  <question type="calculatedsimple">
+    <name>
+      <text>rapport signal sur bruit en dB via des dBm</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider a noise which has a mean power of {n} dBm and a signal of interest&nbsp; which has a mean power of {p} dBm.</p><p>The dBm is a log scale power unit. It is defined as&nbsp; the ratio of the signal power in watt (W) over a reference power of 1 mW.<br></p><p>What is the signal to noise ratio in decibels ? Write also the unit.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>0</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>0</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+<answer fraction="100">
+    <text>{p}-{n}</text>
+    <tolerance>1</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>1</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+<answer fraction="50">
+    <text>-{p}+{n}</text>
+    <tolerance>0.01</tolerance>
+    <tolerancetype>1</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>2</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+    <unitgradingtype>1</unitgradingtype>
+    <unitpenalty>0.2500000</unitpenalty>
+    <showunits>0</showunits>
+    <unitsleft>0</unitsleft>
+<units>
+  <unit>
+    <multiplier>1</multiplier>
+    <unit_name>dB</unit_name>
+  </unit>
+</units>
+<dataset_definitions>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>p</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>-18.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>-13.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>10.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>10.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>8.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>16.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>9.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>-18.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>-19.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>-19.3</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>n</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>14.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>7.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>-19.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>10.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>-5.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>-12.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>6.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>19.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>12.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>14.2</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+  </question>
+
+<!-- question: 101898  -->
+  <question type="calculatedsimple">
+    <name>
+      <text>variance</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider the following digital signal x(n) :</p><p>x(0)={x0}</p><p>x(1)={x1}</p><p>x(2)={x2}<br></p><p>x(3)={x3}</p><p>x(4)={x4}</p><p><br></p><p>Estimate&nbsp; the variance (average power) of this signal.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <synchronize>0</synchronize>
+    <single>0</single>
+    <answernumbering>abc</answernumbering>
+    <shuffleanswers>0</shuffleanswers>
+    <correctfeedback>
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback>
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback>
+      <text></text>
+    </incorrectfeedback>
+<answer fraction="100">
+    <text>({x0}*{x0}+{x1}*{x1}+{x2}*{x2}+{x3}*{x3}+{x4}*{x4})/5-({x0}+{x1}+{x2}+{x3}+{x4})*({x0}+{x1}+{x2}+{x3}+{x4})/25</text>
+    <tolerance>0.1</tolerance>
+    <tolerancetype>2</tolerancetype>
+    <correctanswerformat>1</correctanswerformat>
+    <correctanswerlength>1</correctanswerlength>
+    <feedback format="html">
+<text></text>
+    </feedback>
+</answer>
+    <unitgradingtype>0</unitgradingtype>
+    <unitpenalty>0.1000000</unitpenalty>
+    <showunits>3</showunits>
+    <unitsleft>0</unitsleft>
+<dataset_definitions>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>x0</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>8.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>8.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>3.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>2.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>6.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>1.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>6.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>3.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>7.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>5.1</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>x1</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>6.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>1.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>1.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>4.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>6.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>1.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>4.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>4.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>3.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>2.2</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>x2</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>1.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>5.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>9.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>7.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>4.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>2.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>4.0</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>7.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>2.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>8.8</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>x3</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>7.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>7.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>8.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>3.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>4.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>7.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>5.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>3.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>4.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>7.5</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+<dataset_definition>
+    <status><text>private</text>
+</status>
+    <name><text>x4</text>
+</name>
+    <type>calculatedsimple</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>1.0</text>
+</minimum>
+    <maximum><text>10.0</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>10</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>2.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>1.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>9.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>9.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>7.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>7.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>8.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>5.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>9.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>9.4</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>10</number_of_items>
+</dataset_definition>
+</dataset_definitions>
+  </question>
+
+<!-- question: 101899  -->
+  <question type="description">
+    <name>
+      <text>Definition dBm</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>The dBm is a log scale power unit. It is defined as&nbsp; the ratio of the signal power in watt (W) over a reference power of 1 mW.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>0.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+  </question>
+
+</quiz>
