@@ -39,7 +39,7 @@ reponse3 = ''
 feedback3 = ''
 pourcentage3 = ''
 
-majuscule = 'oui'
+majuscule = 'oui' # mettre 'oui' si on veut prendre en compte les majuscules dans la réponse 
 
 
 #'top' va contenir tout le document xml 

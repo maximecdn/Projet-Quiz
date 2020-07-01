@@ -29,7 +29,7 @@ feedback_faux = 'feedback pour faux'
 
 penalite = '1'
 
-bonne_reponse = 'faux'
+bonne_reponse = 'faux'     #mettre 'vrai' ou 'faux'
 
 #'top' va contenir tout le document xml 
 top = Element('quiz')

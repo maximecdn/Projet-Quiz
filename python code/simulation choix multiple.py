@@ -55,9 +55,9 @@ reponse6 = ''
 feedback6 = ''
 pourcentage6 = '0'
 
-melange_reponse = 'oui'
-numerotation = '123'
-montrer_nombre_correcte = 'oui'
+melange_reponse = 'oui' #mettre 'oui' si on veut mélanger l'ordre des reponses
+numerotation = '123'    #mettre '123' ou 'abc' 
+montrer_nombre_correcte = 'oui'    # mettre 'oui' si on veut indiquer le nombre de bonne reponses correctes
 
 
 #'top' va contenir tout le document xml 
@@ -118,9 +118,6 @@ if melange_reponse == 'oui' :
     shuffleanswers.text = 'true'
 else:
     shuffleanswers.text = 'false'
-
-answer = SubElement(question,'answer')
-answer.set('fraction','100')
 
 answernumbering = SubElement(question,'answernumbering')
 answernumbering.text = numerotation
@@ -247,14 +244,14 @@ f=open(file_name_txt,'r')
 chaine=f.read().replace('&lt;','<')
 chaine = chaine.replace ('&gt;','>')
 f.close() 
-f=open(file_name_txt,'w') 
+f=open(file_name_txt,'w')  
 f.write(chaine) 
 f.close()
 
-#on transforme le fichier txt en fichier xml
+ #on transforme le fichier txt en fichier xml
 for filename in os.listdir(os.path.dirname(os.path.abspath(__file__))):
     base_file, ext = os.path.splitext(filename)
     if ext == ".txt":
-        if os.path.exists(file_name_xml):
-            os.remove(file_name_xml)
-        os.rename(filename, file_name + ".XML") 
+         if os.path.exists(file_name_xml):
+             os.remove(file_name_xml)
+         os.rename(filename, file_name + ".XML") 

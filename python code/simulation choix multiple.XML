@@ -20,7 +20,7 @@
     <defaultgrade>3</defaultgrade>
     <penalty>1</penalty>
     <hidden>0</hidden>
-    <single>true</single>
+    <single>false</single>
     <shuffleanswers>true</shuffleanswers>
     <answernumbering>123</answernumbering>
     <correctfeedback format="html">
@@ -33,7 +33,7 @@
       <text>le feedback incorrecte</text>
     </correctfeedback>
     <shownumcorrect/>
-    <answer fraction="100">
+    <answer fraction="50">
       <text><![CDATA[<p>oui</p>]]></text>
       <feedback format="html">
         <text/>
@@ -45,7 +45,7 @@
         <text/>
       </feedback>
     </answer>
-    <answer fraction="">
+    <answer fraction="50">
       <text><![CDATA[<p>un peu</p>]]></text>
       <feedback format="html">
         <text/>
