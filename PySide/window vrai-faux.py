@@ -26,26 +26,48 @@ class Window(QWidget):
         self.groupBox = QGroupBox("type de question : vrai faux")
         gridLayout = QGridLayout()
 
+        self.lineedit_nom_fichier = QLineEdit(self)
+        self.lineedit_nom_fichier.setPlaceholderText("nom du fichier")
+        gridLayout.addWidget(self.lineedit_nom_fichier,0 ,0)
+
         self.lineedit_nom_question = QLineEdit(self)
         self.lineedit_nom_question.setFont(QFont('Sanserif', 10))
         self.lineedit_nom_question.setPlaceholderText("nom question")
-        
-        
-        gridLayout.addWidget(self.lineedit_nom_question, 0,0)
+        gridLayout.addWidget(self.lineedit_nom_question,1 ,0)
 
         self.lineedit_intitule_question = QLineEdit(self)
         self.lineedit_intitule_question.setFont(QFont('Sanserif', 10))
         self.lineedit_intitule_question.setPlaceholderText("intitule question")
-        gridLayout.addWidget(self.lineedit_intitule_question, 1,0)
+        gridLayout.addWidget(self.lineedit_intitule_question,2 ,0)
+
+        self.lineedit_feedback_general = QLineEdit(self)
+        self.lineedit_feedback_general.setPlaceholderText("feedback general")
+        gridLayout.addWidget(self.lineedit_feedback_general,3 ,0)
  
-        self.combobox = QComboBox()
-        self.combobox.addItem("vrai")
-        self.combobox.addItem("faux")
-        gridLayout.addWidget(self.combobox,2,0)
+        self.combobox_vraifaux = QComboBox()
+        self.combobox_vraifaux.addItem("vrai")
+        self.combobox_vraifaux.addItem("faux")
+        gridLayout.addWidget(self.combobox_vraifaux,4 ,0)
+
+        self.lineedit_note_par_defaut = QLineEdit(self)
+        self.lineedit_note_par_defaut.setPlaceholderText("note par defaut")
+        gridLayout.addWidget(self.lineedit_note_par_defaut,5 ,0)
+
+        self.lineedit_penalite = QLineEdit(self)
+        self.lineedit_penalite.setPlaceholderText("pénalité")
+        gridLayout.addWidget(self.lineedit_penalite,6 ,0)
+
+        self.lineedit_feedback_vrai = QLineEdit(self)
+        self.lineedit_feedback_vrai.setPlaceholderText("feedback vrai")
+        gridLayout.addWidget(self.lineedit_feedback_vrai,7 ,0)
+
+        self.lineedit_feedback_faux = QLineEdit(self)
+        self.lineedit_feedback_faux.setPlaceholderText("feedback faux")
+        gridLayout.addWidget(self.lineedit_feedback_faux,8 ,0)
 
         self.bouton = QPushButton("créer la question")
         self.bouton.clicked.connect(self.creer_question)
-        gridLayout.addWidget(self.bouton,3,0)
+        gridLayout.addWidget(self.bouton,9 ,0)
         
         self.groupBox.setLayout(gridLayout)
 
@@ -56,25 +78,25 @@ class Window(QWidget):
     def creer_question(self):
         print("creation des lignes du xml")
         #non du fichier xml que l'on veut creer
-        file_name = " azerty"
+        file_name = self.lineedit_nom_fichier.text()
         file_name_txt = file_name + ".txt"
         file_name_xml = file_name + ".XML"
         adresse = "Desktop/projet quiz/" 
 
 
 
-        nom_question = 'simulation vrai faux'
-        intitule_question = 'vrai ou faux ??'
+        nom_question = self.lineedit_nom_question.text()
+        intitule_question = self.lineedit_intitule_question.text()
 
-        note_par_defaut = '3'
+        note_par_defaut = self.lineedit_note_par_defaut.text()
 
-        feedback_general = 'le feedback general'
-        feedback_vrai = 'feedback pour vrai'
-        feedback_faux = 'feedback pour faux'
+        feedback_general = self.lineedit_feedback_general.text()
+        feedback_vrai = self.lineedit_feedback_vrai.text()
+        feedback_faux = self.lineedit_feedback_faux.text()
 
-        penalite = '1'
+        penalite = self.lineedit_penalite.text()
 
-        bonne_reponse = 'faux'
+        bonne_reponse = self.combobox_vraifaux.currentText()
 
         #'top' va contenir tout le document xml 
         top = Element('quiz')
@@ -181,24 +203,12 @@ class Window(QWidget):
         print("modification du txt 2")
         f.close()
         
+        #on transforme le fichier txt en fichier xml
         if os.path.exists(adresse + file_name_xml):
             os.remove(adresse + file_name_xml)
             print("le xml existe deja on le remplace par le nouveau")
         os.rename(adresse + file_name_txt, adresse + file_name_xml)
 
-        '''#on transforme le fichier txt en fichier xml
-        for filename in os.listdir(os.path.dirname(os.path.abspath(adresse + file_name_txt))):
-            #print("le competeur vaut " + str(filename))
-            #base_file, ext = os.path.splitext(filename)
-            if filename == file_name_txt:
-                #print("le competeur vaut " + str(filename))
-                print("fichier txt deja present")
-                if os.path.exists(file_name_xml):
-                    print("le xml existe deja")
-                    os.remove(file_name_xml)
-                os.rename(filename, file_name + ".XML")
-                print("transformation en xml")'''
-            
         
 
 
