@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!--question: 0-->
+  <question type="category">
+    <category>
+      <text>top</text>
+    </category>
+  </question>
+  <!--question: numerique-->
+  <question type="numerical">
+    <name>
+      <text>simulation numerique</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>combien ??</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>le feedback general</text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>1</penalty>
+    <hidden>0</hidden>
+    <answer fraction="100">
+      <text>12</text>
+      <feedback format="html">
+        <text>feedback pour la reponse</text>
+      </feedback>
+      <tolerance>0.5</tolerance>
+    </answer>
+    <answer fraction="50">
+      <text>4</text>
+      <feedback format="html">
+        <text>feedback de la reponse 2</text>
+      </feedback>
+      <tolerance>0.5</tolerance>
+    </answer>
+    <units>
+      <unit>
+        <multiplier>1</multiplier>
+        <unit_name>m</unit_name>
+      </unit>
+    </units>
+    <unitgradingtype>0</unitgradingtype>
+    <unitpenalty>0.1</unitpenalty>
+    <shownunits>0</shownunits>
+    <unitsleft>0</unitsleft>
+  </question>
+</quiz>

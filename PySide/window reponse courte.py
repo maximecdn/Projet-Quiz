@@ -1,30 +1,38 @@
-from PySide2.QtWidgets import QApplication, QWidget , QVBoxLayout, QHBoxLayout, QBoxLayout, QPushButton, QGroupBox, QGridLayout, QTextEdit, QLineEdit, QComboBox, QMessageBox, QLabel, QSpacerItem
+from PySide2.QtWidgets import QApplication, QWidget , QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox, QTextEdit, QLineEdit, QComboBox, QLabel, QCheckBox, QScrollBar, QScrollArea
 from PySide2.QtGui import QIcon, QFont
+from PySide2 import QtCore
 import os, sys
 
 from xml.etree import ElementTree as ET
 from xml.dom import minidom
 from xml.etree.ElementTree import Element, SubElement, Comment
 
-
 class Window(QWidget):
     def __init__(self):
         super().__init__()
 
         self.setWindowTitle("Vrai-Faux")
-        self.setGeometry(900,900,900,900)
+        self.setGeometry(500,500,500,500)
+        
 
         self.createVBoxLayout()
+        
         vbox = QVBoxLayout()
         vbox.addWidget(self.groupBox)
         self.setLayout(vbox)
+
+        
  
  
         self.show()
 
     def createVBoxLayout(self):
-        self.groupBox = QGroupBox("Type de question : vrai faux")
+        self.groupBox = QGroupBox("Type de question : réponse courte")
         VBoxLayout = QVBoxLayout()
+        #VBoxLayout.setSpacing(50)
+
+        #scrollbar = QScrollArea()
+        #scrollbar.setLayout(VBoxLayout)
 
         hbox_nom_fichier = QHBoxLayout()
         VBoxLayout.addLayout(hbox_nom_fichier)
@@ -63,22 +71,10 @@ class Window(QWidget):
         hbox_intitule_question.addWidget(self.textedit_intitule_question)
         hbox_intitule_question.insertSpacing(2,100)
 
-        hbox_bonne_reponse = QHBoxLayout()
-        VBoxLayout.addLayout(hbox_bonne_reponse)
- 
-        self.label_vraifaux = QLabel("Bonne réponse :", self)
-        self.label_vraifaux.setFixedWidth(150)
-        hbox_bonne_reponse.addWidget(self.label_vraifaux)
-
-        self.combobox_vraifaux = QComboBox()
-        self.combobox_vraifaux.addItem("Vrai")
-        self.combobox_vraifaux.addItem("Faux")
-        hbox_bonne_reponse.addWidget(self.combobox_vraifaux)
-        hbox_bonne_reponse.insertSpacing(2,1000)
-
         hbox_note_defaut = QHBoxLayout()
         VBoxLayout.addLayout(hbox_note_defaut)
         
+
         self.label_note_par_defaut = QLabel("Note par défaut :", self)
         self.label_note_par_defaut.setFixedWidth(150)
         hbox_note_defaut.addWidget(self.label_note_par_defaut)
@@ -86,8 +82,8 @@ class Window(QWidget):
 
         self.lineedit_note_par_defaut = QLineEdit(self)
         hbox_note_defaut.addWidget(self.lineedit_note_par_defaut)
-        hbox_note_defaut.insertSpacing(2,700)
-        
+        hbox_note_defaut.insertSpacing(2,600)
+
         hbox_penalite = QHBoxLayout()
         VBoxLayout.addLayout(hbox_penalite)
 
@@ -105,11 +101,16 @@ class Window(QWidget):
         self.combobox_penalite.addItem("0")
         hbox_penalite.addWidget(self.combobox_penalite)
         hbox_penalite.insertSpacing(2,1000)
+        
+        
 
         hbox_feedbackgeneral = QHBoxLayout()
         VBoxLayout.addLayout(hbox_feedbackgeneral)
 
+
+
         
+
         self.label_feedbackgeneral = QLabel("Feedback general :", self)
         self.label_feedbackgeneral.setFixedWidth(150)
         hbox_feedbackgeneral.addWidget(self.label_feedbackgeneral)
@@ -118,29 +119,99 @@ class Window(QWidget):
         hbox_feedbackgeneral.addWidget(self.lineedit_feedback_general)
         hbox_feedbackgeneral.insertSpacing(2,100)
 
-        
-        hbox_feedback_vrai = QHBoxLayout()
-        VBoxLayout.addLayout(hbox_feedback_vrai)
-        
-        self.label_feedbackvrai = QLabel("Feedback pour la réponse 'vrai' :", self)
-        self.label_feedbackvrai.setFixedWidth(150)
-        self.label_feedbackvrai.setWordWrap(True)
-        hbox_feedback_vrai.addWidget(self.label_feedbackvrai)
+        hbox_maj = QHBoxLayout()
+        VBoxLayout.addLayout(hbox_maj)
 
-        self.lineedit_feedback_vrai = QLineEdit(self)
-        hbox_feedback_vrai.addWidget(self.lineedit_feedback_vrai)
+        self.label_maj = QLabel("sensible à la case :",self)
+        self.label_maj.setFixedWidth(150)
+        hbox_maj.addWidget(self.label_maj)
 
+        self.combobox_maj = QComboBox()
+        self.combobox_maj.addItem("non, la case n'est pas importante")
+        self.combobox_maj.addItem("oui la case doit correspondre")
+        hbox_maj.addWidget(self.combobox_maj)
+        hbox_maj.insertSpacing(2,450)
 
-        hbox_feedback_faux = QHBoxLayout()
-        VBoxLayout.addLayout(hbox_feedback_faux)
+        self.label_espace_reponse1 = QLabel("",self)
+        VBoxLayout.addWidget(self.label_espace_reponse1)
 
-        self.label_feedbackfaux = QLabel("Feedback pour la réponse 'faux' :", self)
-        self.label_feedbackfaux.setFixedWidth(150)
-        self.label_feedbackfaux.setWordWrap(True)
-        hbox_feedback_faux.addWidget(self.label_feedbackfaux)
+        hbox_reponse1 = QHBoxLayout()
+        VBoxLayout.addLayout(hbox_reponse1)
 
-        self.lineedit_feedback_faux = QLineEdit(self)
-        hbox_feedback_faux.addWidget(self.lineedit_feedback_faux)
+        self.label_reponse1 = QLabel("Réponse 1 :", self)
+        self.label_reponse1.setFixedWidth(150)
+        hbox_reponse1.addWidget(self.label_reponse1)
+
+        self.LineEditReponse1 = QLineEdit(self)
+        hbox_reponse1.addWidget(self.LineEditReponse1)
+
+        self.label_note1 = QLabel("note (%) :",self)
+        hbox_reponse1.addWidget(self.label_note1)
+
+        self.combobox_reponse1 = QComboBox()
+        self.combobox_reponse1.addItem("100")
+        self.combobox_reponse1.addItem("75")
+        self.combobox_reponse1.addItem("66.66")
+        self.combobox_reponse1.addItem("50")
+        self.combobox_reponse1.addItem("25")
+        self.combobox_reponse1.addItem("33.333")
+        self.combobox_reponse1.addItem("0")
+        hbox_reponse1.addWidget(self.combobox_reponse1)
+        hbox_reponse1.insertSpacing(4,70)
+
+        hbox_feedback_reponse1 = QHBoxLayout()
+        VBoxLayout.addLayout(hbox_feedback_reponse1)
+
+        self.label_feedback_reponse1 = QLabel("Feedback pour la réponse 1 :", self)
+        self.label_feedback_reponse1.setWordWrap(True)
+        self.label_feedback_reponse1.setFixedWidth(150)
+        hbox_feedback_reponse1.addWidget(self.label_feedback_reponse1)
+
+        self.lineedit_feedback_reponse1 = QLineEdit(self)
+        hbox_feedback_reponse1.addWidget(self.lineedit_feedback_reponse1)
+        hbox_feedback_reponse1.insertSpacing(2,100)
+
+        self.label_espace_reponse2 = QLabel("",self)
+        VBoxLayout.addWidget(self.label_espace_reponse2)
+
+        hbox_reponse2 = QHBoxLayout()
+        VBoxLayout.addLayout(hbox_reponse2)
+
+        self.label_reponse2 = QLabel("Réponse 2 :", self)
+        self.label_reponse2.setFixedWidth(150)
+        hbox_reponse2.addWidget(self.label_reponse2)
+
+        self.LineEditReponse2 = QLineEdit(self)
+        hbox_reponse2.addWidget(self.LineEditReponse2)
+
+        self.label_note2 = QLabel("note (%) :",self)
+        hbox_reponse2.addWidget(self.label_note2)
+
+        self.combobox_reponse2 = QComboBox()
+        self.combobox_reponse2.addItem("100")
+        self.combobox_reponse2.addItem("75")
+        self.combobox_reponse2.addItem("66.66")
+        self.combobox_reponse2.addItem("50")
+        self.combobox_reponse2.addItem("25")
+        self.combobox_reponse2.addItem("33.333")
+        self.combobox_reponse2.addItem("0")
+        hbox_reponse2.addWidget(self.combobox_reponse2)
+        hbox_reponse2.insertSpacing(4,70)
+
+        hbox_feedback_reponse2 = QHBoxLayout()
+        VBoxLayout.addLayout(hbox_feedback_reponse2)
+
+        self.label_feedback_reponse2 = QLabel("Feedback pour la réponse 2 :", self)
+        self.label_feedback_reponse2.setWordWrap(True)
+        self.label_feedback_reponse2.setFixedWidth(150)
+        hbox_feedback_reponse2.addWidget(self.label_feedback_reponse2)
+
+        self.lineedit_feedback_reponse2 = QLineEdit(self)
+        hbox_feedback_reponse2.addWidget(self.lineedit_feedback_reponse2)
+        hbox_feedback_reponse2.insertSpacing(4,100) 
+
+        self.label_espace_bouton = QLabel("",self)
+        VBoxLayout.addWidget(self.label_espace_bouton)
 
         hbox_bouton_question = QHBoxLayout()
         VBoxLayout.addLayout(hbox_bouton_question)
@@ -150,20 +221,20 @@ class Window(QWidget):
         hbox_bouton_question.addWidget(self.button)
         hbox_bouton_question.insertSpacing(2,400)
         hbox_bouton_question.insertSpacing(0,400)
-        
-        self.groupBox.setLayout(VBoxLayout)
 
+        self.groupBox.setLayout(VBoxLayout)
     
 
     
 
     def creer_question(self):
         print("creation des lignes du xml")
+
         #non du fichier xml que l'on veut creer
         file_name = self.lineedit_nom_fichier.text()
         file_name_txt = file_name + ".txt"
         file_name_xml = file_name + ".XML"
-        adresse = "Desktop/projet quiz/" 
+        adresse = "Desktop/projet quiz/"
 
 
 
@@ -173,12 +244,25 @@ class Window(QWidget):
         note_par_defaut = self.lineedit_note_par_defaut.text()
 
         feedback_general = self.lineedit_feedback_general.text()
-        feedback_vrai = self.lineedit_feedback_vrai.text()
-        feedback_faux = self.lineedit_feedback_faux.text()
 
-        penalite = self.combobox_penalite.currentText()
+        penalite = str(float(self.combobox_penalite.currentText()) / 100)
 
-        bonne_reponse = self.combobox_vraifaux.currentText()
+        reponse1 = self.LineEditReponse1.text()
+        feedback1 = self.lineedit_feedback_reponse1.text()
+        pourcentage1 = self.combobox_reponse1.currentText()
+
+        reponse2 = self.LineEditReponse2.text()
+        feedback2 = self.lineedit_feedback_reponse2.text()
+        pourcentage2 = self.combobox_reponse2.currentText()
+
+        reponse3 = ''
+        feedback3 = ''
+        pourcentage3 = ''
+
+        majuscule = ''
+        if self.combobox_maj.currentIndex() == 1 :
+            majuscule = 'oui' # mettre 'oui' si on veut prendre en compte les majuscules dans la réponse 
+
 
         #'top' va contenir tout le document xml 
         top = Element('quiz')
@@ -195,11 +279,11 @@ class Window(QWidget):
         text  = SubElement(category,'text')
         text.text = 'top'
 
-        comment = Comment('question: vrai faux')
+        comment = Comment('question: reponse courte')
         top.append(comment)
 
         question = SubElement(top, 'question')
-        question.set('type','truefalse')
+        question.set('type','shortanswer')
 
         name = SubElement(question,'name')
 
@@ -227,42 +311,58 @@ class Window(QWidget):
         hidden= SubElement(question,'hidden')
         hidden.text = '0'
 
+        usecase = SubElement(question,'usecase')
+        if majuscule == 'oui' :
+            usecase.text = '1'
+        else :
+            usecase.text = '0'
+
         answer = SubElement(question,'answer')
-        if bonne_reponse == 'vrai':
-            answer.set('fraction','100')
-        else:
-            answer.set('fraction','0')
+        answer.set('fraction',pourcentage1)
         answer.set('format','moodle_auto_format')
 
         text = SubElement(answer,'text')
-        text.text = 'true'
+        text.text = reponse1
 
         feedback = SubElement(answer,'feedback')
         feedback.set('format','html')
 
         text = SubElement(feedback,'text')
-        text.text = feedback_vrai
+        text.text = feedback1
 
-        answer = SubElement(question,'answer')
-        if bonne_reponse == 'vrai':
-            answer.set('fraction','0')
-        else:
-            answer.set('fraction','100')
-        answer.set('format','moodle_auto_format')
 
-        text = SubElement(answer,'text')
-        text.text = 'false'
+        if reponse2 != '' : 
+            answer = SubElement(question,'answer')
+            answer.set('fraction',pourcentage2)
+            answer.set('format','moodle_auto_format')
 
-        feedback = SubElement(answer,'feedback')
-        feedback.set('format','html')
+            text = SubElement(answer,'text')
+            text.text = reponse2
 
-        text = SubElement(feedback,'text')
-        text.text = feedback_faux
+            feedback = SubElement(answer,'feedback')
+            feedback.set('format','html')
+
+            text = SubElement(feedback,'text')
+            text.text = feedback2
+
+
+        if reponse3 != '' : 
+            answer = SubElement(question,'answer')
+            answer.set('fraction',pourcentage3)
+            answer.set('format','moodle_auto_format')
+
+            text = SubElement(answer,'text')
+            text.text = reponse3
+
+            feedback = SubElement(answer,'feedback')
+            feedback.set('format','html')
+
+            text = SubElement(feedback,'text')
+            text.text = feedback3
 
 
         #on cree un fichier txt qui contient toute les lignes du fichier xml que l'on va creer
         fichier = open(adresse + file_name_txt, "w")
-        print("creation du txt")
         fichier.write(prettify(top))
         fichier.close()
 
@@ -272,7 +372,6 @@ class Window(QWidget):
         fichier = open(adresse + file_name_txt, "w")
         lignes[0] = '<?xml version="1.0" encoding="UTF-8"?>\n'
         fichier.writelines(lignes)
-        print("modification du txt 1")
         fichier.close()
 
         #on remplace les &lt; et les &gt; par < et > dans le fichier
@@ -282,26 +381,22 @@ class Window(QWidget):
         f.close() 
         f=open(adresse + file_name_txt,'w') 
         f.write(chaine) 
-        print("modification du txt 2")
         f.close()
-        
+
         #on transforme le fichier txt en fichier xml
         if os.path.exists(adresse + file_name_xml):
             os.remove(adresse + file_name_xml)
-            print("le xml existe deja on le remplace par le nouveau")
         os.rename(adresse + file_name_txt, adresse + file_name_xml)
 
-        
 
 
-#fonction qui permet de mettre en forme le fichier xml avec les indexations
+
 def prettify(elem):
     """Return a pretty-printed XML string for the Element.
     """
     rough_string = ET.tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
-
 
 myApp = QApplication(sys.argv)
 window = Window()

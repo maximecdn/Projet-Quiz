@@ -15,6 +15,7 @@ def prettify(elem):
 file_name = 'simulation reponse courte'
 file_name_txt = file_name + ".txt"
 file_name_xml = file_name + ".XML"
+adresse = "Desktop/projet quiz/"
 
 
 
@@ -140,31 +141,28 @@ if reponse3 != '' :
 
 
 #on cree un fichier txt qui contient toute les lignes du fichier xml que l'on va creer
-fichier = open(file_name_txt, "w")
+fichier = open(adresse + file_name_txt, "w")
 fichier.write(prettify(top))
 fichier.close()
 
 #on rajoute ' encoding="UTF-8" ' dans la premiere ligne 
-fichier = open(file_name_txt, "r")
+fichier = open(adresse + file_name_txt, "r")
 lignes= fichier.readlines()
-fichier = open(file_name_txt, "w")
+fichier = open(adresse + file_name_txt, "w")
 lignes[0] = '<?xml version="1.0" encoding="UTF-8"?>\n'
 fichier.writelines(lignes)
 fichier.close()
 
 #on remplace les &lt; et les &gt; par < et > dans le fichier
-f=open(file_name_txt,'r')
+f=open(adresse + file_name_txt,'r')
 chaine=f.read().replace('&lt;','<')
 chaine = chaine.replace ('&gt;','>')
 f.close() 
-f=open(file_name_txt,'w') 
+f=open(adresse + file_name_txt,'w') 
 f.write(chaine) 
 f.close()
 
 #on transforme le fichier txt en fichier xml
-for filename in os.listdir(os.path.dirname(os.path.abspath(__file__))):
-    base_file, ext = os.path.splitext(filename)
-    if ext == ".txt":
-        if os.path.exists(file_name_xml):
-            os.remove(file_name_xml)
-        os.rename(filename, file_name + ".XML")
+if os.path.exists(adresse + file_name_xml):
+    os.remove(adresse + file_name_xml)
+os.rename(adresse + file_name_txt, adresse + file_name_xml)

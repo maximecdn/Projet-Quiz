@@ -40,8 +40,8 @@ class Window(QWidget):
  
  
  
-    def checkBoxChange(self, state):
-        if state == Qt.Checked:
+    def checkBoxChange(self, oui):
+        if oui == Qt.Checked:
             self.label.setText("Yes I Like Football")
  
         else:
