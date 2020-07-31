@@ -1,6 +1,9 @@
+''' Fenêtre qui sert à créer/modifier les question de type 'vrai faux' '''
+
 from PySide2.QtWidgets import QApplication, QWidget , QVBoxLayout, QHBoxLayout, QBoxLayout, QPushButton, QGroupBox, QGridLayout, QTextEdit, QLineEdit, QComboBox, QMessageBox, QLabel, QSpacerItem
 from PySide2.QtGui import QIcon, QFont
 import os, sys
+import os.path
 
 from xml.etree import ElementTree as ET
 from xml.dom import minidom
@@ -34,7 +37,7 @@ class Window_vraifaux(QWidget):
         hbox_adresse.addWidget(self.label_adresse)
 
         self.lineedit_adresse = QLineEdit(self)
-        self.lineedit_adresse.setText("Desktop\projet juillet 2020")
+        self.lineedit_adresse.setText(os.getcwd())
         hbox_adresse.addWidget(self.lineedit_adresse)
         hbox_adresse.insertSpacing(2,400)
 
@@ -170,7 +173,8 @@ class Window_vraifaux(QWidget):
     
 
     def creer_question(self):
-        print("creation des lignes du xml")
+        #Fonction qui va créer un fichier xml en qui correspond à une question 'vrai faux' en prenant en compte toutes les infos dans les champs remplis de la fenêtre
+        
         #non du fichier xml que l'on veut creer
         file_name = self.lineedit_nom_fichier.text()
         file_name_txt = file_name + ".txt"
@@ -274,7 +278,6 @@ class Window_vraifaux(QWidget):
 
         #on cree un fichier txt qui contient toute les lignes du fichier xml que l'on va creer
         fichier = open(adresse + file_name_txt, "w")
-        print("creation du txt")
         fichier.write(prettify(top))
         fichier.close()
 
@@ -284,7 +287,6 @@ class Window_vraifaux(QWidget):
         fichier = open(adresse + file_name_txt, "w")
         lignes[0] = '<?xml version="1.0" encoding="UTF-8"?>\n'
         fichier.writelines(lignes)
-        print("modification du txt 1")
         fichier.close()
 
         #on remplace les &lt; et les &gt; par < et > dans le fichier
@@ -294,13 +296,11 @@ class Window_vraifaux(QWidget):
         f.close() 
         f=open(adresse + file_name_txt,'w') 
         f.write(chaine) 
-        print("modification du txt 2")
         f.close()
         
         #on transforme le fichier txt en fichier xml
         if os.path.exists(adresse + file_name_xml):
             os.remove(adresse + file_name_xml)
-            print("le xml existe deja on le remplace par le nouveau")
         os.rename(adresse + file_name_txt, adresse + file_name_xml)
 
         
@@ -313,11 +313,3 @@ def prettify(elem):
     rough_string = ET.tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
-"""
-myApp = QApplication(sys.argv)
-window_vraifaux = Window_vraifaux()
-
-window_vraifaux.show()
-
-myApp.exec_()
-sys.exit(0)"""

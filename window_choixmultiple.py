@@ -1,3 +1,5 @@
+''' Fenêtre qui sert à créer/modifier les question de type 'choix multiple' '''
+
 from PySide2.QtWidgets import QApplication, QWidget , QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox, QTextEdit, QLineEdit, QComboBox, QLabel, QCheckBox, QScrollBar, QScrollArea
 from PySide2.QtGui import QIcon, QFont
 from PySide2 import QtCore
@@ -40,7 +42,7 @@ class Window_choixmultiple(QWidget):
         hbox_adresse.addWidget(self.label_adresse)
 
         self.lineedit_adresse = QLineEdit(self)
-        self.lineedit_adresse.setText("Desktop\projet juillet 2020")
+        self.lineedit_adresse.setText(os.getcwd())
         hbox_adresse.addWidget(self.lineedit_adresse)
         hbox_adresse.insertSpacing(2,400)
 
@@ -368,7 +370,7 @@ class Window_choixmultiple(QWidget):
     
 
     def creer_question(self):
-        print("creation des lignes du xml")
+        #Fonction qui va créer un fichier xml en qui correspond à une question 'choix multiple' en prenant en compte toutes les infos dans les champs remplis de la fenêtre
 
         #non du fichier xml que l'on veut creer
         file_name = self.lineedit_nom_fichier.text()
@@ -631,11 +633,3 @@ def prettify(elem):
     rough_string = ET.tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")    
-
-"""myApp = QApplication(sys.argv)
-window_choixmultiple = Window_choixmultiple()
-
-window_choixmultiple.show()
-
-myApp.exec_()
-sys.exit(0)"""

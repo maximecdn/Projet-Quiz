@@ -1,3 +1,5 @@
+''' Fenêtre qui sert à créer/modifier les question de type 'calculée simple' '''
+
 from PySide2.QtWidgets import QApplication, QWidget , QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox, QTextEdit, QLineEdit, QComboBox, QLabel, QCheckBox, QScrollBar, QScrollArea
 from PySide2.QtGui import QIcon, QFont
 from PySide2 import QtCore
@@ -42,7 +44,7 @@ class Window_calculeesimple(QWidget):
         hbox_adresse.addWidget(self.label_adresse)
 
         self.lineedit_adresse = QLineEdit(self)
-        self.lineedit_adresse.setText("Desktop\projet juillet 2020")
+        self.lineedit_adresse.setText(os.getcwd())
         hbox_adresse.addWidget(self.lineedit_adresse)
         hbox_adresse.insertSpacing(2,400)
 
@@ -127,6 +129,52 @@ class Window_calculeesimple(QWidget):
         hbox_feedbackgeneral.addWidget(self.lineedit_feedback_general)
         hbox_feedbackgeneral.insertSpacing(2,100)
 
+        self.label_espace_reponse = QLabel("",self)
+        VBoxLayout.addWidget(self.label_espace_reponse)
+
+        hbox_reponse = QHBoxLayout()
+        VBoxLayout.addLayout(hbox_reponse)
+
+        self.label_reponse = QLabel("Formule Réponse :",self)
+        self.label_reponse.setFixedWidth(150)
+        hbox_reponse.addWidget(self.label_reponse)
+
+        self.lineedit_reponse = QLineEdit(self)
+        hbox_reponse.addWidget(self.lineedit_reponse)
+        
+        self.label_note1 = QLabel("note (%) :",self)
+        hbox_reponse.addWidget(self.label_note1)
+
+        self.combobox_reponse1 = QComboBox()
+        self.combobox_reponse1.addItem("100")
+        self.combobox_reponse1.addItem("75")
+        self.combobox_reponse1.addItem("66.66")
+        self.combobox_reponse1.addItem("50")
+        self.combobox_reponse1.addItem("25")
+        self.combobox_reponse1.addItem("33.333")
+        self.combobox_reponse1.addItem("0")
+        hbox_reponse.addWidget(self.combobox_reponse1)
+
+        self.label_erreur_reponse1 = QLabel("erreur :",self)
+        hbox_reponse.addWidget(self.label_erreur_reponse1)
+
+        self.lineedit_erreur_reponse1 = QLineEdit(self)
+        hbox_reponse.addWidget(self.lineedit_erreur_reponse1)
+        hbox_reponse.insertSpacing(6,70)
+        hbox_reponse.insertSpacing(4,70)
+        hbox_reponse.insertSpacing(2,70)
+
+        hbox_feedbackreponse = QHBoxLayout()
+        VBoxLayout.addLayout(hbox_feedbackreponse)
+
+        self.label_feedbackreponse = QLabel("feedback réponse",self)
+        self.label_feedbackreponse.setFixedWidth(150)
+        hbox_feedbackreponse.addWidget(self.label_feedbackreponse)
+
+        self.lineedit_feedbackreponse = QLineEdit(self)
+        hbox_feedbackreponse.addWidget(self.lineedit_feedbackreponse)
+        hbox_feedbackreponse.insertSpacing(2,100)
+
         self.label_espace_unite = QLabel("",self)
         VBoxLayout.addWidget(self.label_espace_unite)
 
@@ -167,7 +215,7 @@ class Window_calculeesimple(QWidget):
         self.combobox_selection_unite = QComboBox()
         self.combobox_selection_unite.addItem("la zone de saisie")
         self.combobox_selection_unite.addItem("une sélection de choix multiple")
-        self.combobox_selection_unite.addItem("la zone de saisie")
+        self.combobox_selection_unite.addItem("un menu déroulant")
         self.combobox_selection_unite.setEnabled(False)
         hbox_selection_unites.addWidget(self.combobox_selection_unite)
         hbox_selection_unites.insertSpacing(2,700)
@@ -242,14 +290,265 @@ class Window_calculeesimple(QWidget):
 
         self.groupBox.setLayout(VBoxLayout)
 
+        self.combobox_traitementunite.currentIndexChanged.connect(self.traitement_unite)
+
+    def traitement_unite(self,index):
+        #Fonction qui permet de rendre actif/inactif certains champs en fonction du traitement de l'unité (comme sur Celene)
+
+        if self.combobox_traitementunite.currentIndex() == 0:
+            self.lineedit_penalite_unite.setEnabled(False)
+            self.lineedit_penalite_unite.setText("")
+            self.combobox_selection_unite.setEnabled(False)
+            self.combobox_position_unite.setEnabled(False)
+            self.lineedit_unite1.setEnabled(False)
+            self.lineedit_unite1.setText("")
+            self.lineedit_coef1.setEnabled(False)
+            self.lineedit_coef1.setText("")
+            self.lineedit_unite2.setEnabled(False)
+            self.lineedit_unite2.setText("")
+            self.lineedit_coef2.setEnabled(False)
+            self.lineedit_coef2.setText("")
+       
+        if self.combobox_traitementunite.currentIndex() == 1:
+            self.lineedit_penalite_unite.setEnabled(False)
+            self.lineedit_penalite_unite.setText("")
+            self.combobox_selection_unite.setEnabled(False)
+            self.combobox_position_unite.setEnabled(True)
+            self.lineedit_unite1.setEnabled(True)
+            self.lineedit_coef1.setEnabled(True)
+            self.lineedit_unite2.setEnabled(True)
+            self.lineedit_coef2.setEnabled(True)
+
+        if self.combobox_traitementunite.currentIndex() == 2:
+            self.lineedit_penalite_unite.setEnabled(True)
+            self.combobox_selection_unite.setEnabled(True)
+            self.combobox_position_unite.setEnabled(True)
+            self.lineedit_unite1.setEnabled(True)
+            self.lineedit_coef1.setEnabled(True)
+            self.lineedit_unite2.setEnabled(True)
+            self.lineedit_coef2.setEnabled(True)
+
+
     def creer_question(self):
-        print("creation des lignes du xml")
+        #Fonction qui va créer un fichier xml en qui correspond à une question 'calculée simple' en prenant en compte toutes les infos dans les champs remplis de la fenêtre
+
+        #non du fichier xml que l'on veut creer
+        file_name = self.lineedit_nom_fichier.text()
+        file_name_txt = file_name + ".txt"
+        file_name_xml = file_name + ".XML"
+        adresse = self.lineedit_adresse.text() + '/'
 
 
-"""myApp = QApplication(sys.argv)
-window = Window()
 
-window.show()
+        nom_question = self.lineedit_nom_question.text()
+        intitule_question = self.textedit_intitule_question.toPlainText()
 
-myApp.exec_()
-sys.exit(0)"""
+        note_par_defaut = self.lineedit_note_par_defaut.text()
+
+        feedback_general = self.lineedit_feedback_general.text()
+
+        penalite = str(float(self.combobox_penalite.currentText()) / 100)
+
+
+        reponse1 = self.lineedit_reponse.text()
+        tolerance1 = self.lineedit_erreur_reponse1.text()
+        pourcentage1 = self.combobox_reponse1.currentText()
+        feedback_reponse1 = self.lineedit_feedbackreponse.text()
+
+        
+
+        traitement_unite = 'sans'     # mettre 'avec', 'optionnel' ou 'sans' 
+        if self.combobox_traitementunite.currentIndex() == 1 :
+            traitement_unite = 'optionnel'
+        
+        if self.combobox_traitementunite.currentIndex() == 2 :
+            traitement_unite = 'avec'
+
+
+        penalite_unite = self.lineedit_penalite_unite.text()
+
+        saisie_unite = 'texte'        # mettre 'texte', 'menu', ou 'selection' 
+        if self.combobox_selection_unite.currentIndex() == 1:
+            saisie_unite = 'selection'
+
+        if self.combobox_selection_unite.currentIndex() == 2:
+            saisie_unite = 'menu'
+            
+
+        position_unite = 'R'          # mettre 'R' ou 'L' 
+        if self.combobox_position_unite.currentIndex() == 1 :
+            position_unite = 'L'
+
+        unite1 = self.lineedit_unite1.text()
+        coef1 = self.lineedit_coef1.text()
+
+        unite2 = self.lineedit_unite2.text()
+        coef2 = self.lineedit_coef2.text()
+
+
+        #'top' va contenir tout le document xml 
+        top = Element('quiz')
+
+        #on ajoute toutes les lignes du documents
+        comment = Comment('question: 0')
+        top.append(comment)
+
+        question = SubElement(top, 'question')
+        question.set('type','category')
+
+        category = SubElement(question,'category')
+
+        text  = SubElement(category,'text')
+        text.text = 'top'
+
+        comment = Comment('question: numerique')
+        top.append(comment)
+
+        question = SubElement(top, 'question')
+        question.set('type','calculatedsimple')
+
+        name = SubElement(question,'name')
+
+        text = SubElement(name,'text')
+        text.text = nom_question
+
+        questiontext = SubElement(question,'questiontext')
+        questiontext.set('format','html')
+
+        text=SubElement(questiontext,'text')
+        text.text = '<![CDATA[<p>' + intitule_question + '</p>]]>'
+
+        generalfeedback = SubElement(question,'generalfeedback')
+        generalfeedback.set('format','html')
+
+        text = SubElement(generalfeedback,'text')
+        text.text = feedback_general
+
+        defaultgrade = SubElement(question,'defaultgrade')
+        defaultgrade.text = note_par_defaut
+
+        penalty = SubElement(question,'penalty')
+        penalty.text = penalite
+
+        hidden= SubElement(question,'hidden')
+        hidden.text = '0'
+
+
+        if reponse1 != '' : 
+            answer = SubElement(question,'answer')
+            answer.set('fraction',pourcentage1)
+
+            text = SubElement(answer,'text')
+            text.text = reponse1
+
+            feedback = SubElement(answer,'feedback')
+            feedback.set('format','html')
+
+            text = SubElement(feedback,'text')
+            text.text = feedback_reponse1
+
+            tolerance = SubElement(answer,'tolerance')
+            tolerance.text = tolerance1
+
+        
+
+        units=SubElement(question,'units')
+
+
+
+        if unite1 != '':
+            unit = SubElement(units,'unit')
+
+            multiplier = SubElement(unit,'multiplier')
+            multiplier.text = coef1
+
+            unit_name = SubElement(unit,'unit_name')
+            unit_name.text = unite1
+
+        if unite2 != '':
+            unit = SubElement(units,'unit')
+
+            multiplier = SubElement(unit,'multiplier')
+            multiplier.text = coef2
+
+            unit_name = SubElement(unit,'unit_name')
+            unit_name.text = unite2
+
+
+        if traitement_unite == 'sans' :
+            unitgradingtype = SubElement(question,'unitgradingtype')
+            unitgradingtype.text = '0'
+
+            unitpenalty = SubElement(question,'unitpenalty')
+            unitpenalty.text = '0.1'
+
+        if traitement_unite == 'optionnel' :
+            unitgradingtype = SubElement(question,'unitgradingtype')
+            unitgradingtype.text = '0'
+
+            unitpenalty = SubElement(question,'unitpenalty')
+            unitpenalty.text = '0.1'
+
+        if traitement_unite == 'avec' :
+            unitgradingtype = SubElement(question,'unitgradingtype')
+            unitgradingtype.text = '2'
+
+            unitpenalty = SubElement(question,'unitpenalty')
+            unitpenalty.text = penalite_unite
+
+        if saisie_unite == 'texte' :
+            showunits = SubElement(question,'showunits')
+            showunits.text = '0'
+
+        if saisie_unite == 'selection' :
+            showunits = SubElement(question,'showunits')
+            showunits.text = '1'
+
+        if saisie_unite == 'menu' :
+            showunits = SubElement(question,'showunits')
+            showunits.text = '2'
+
+        if traitement_unite == 'sans':
+            showunits = SubElement(question,'showunits')
+            showunits.text = '3'
+
+        if position_unite == 'L':
+            unitsleft = SubElement(question,'unitsleft')
+            unitsleft.text = '1'
+        else :
+            unitsleft = SubElement(question,'unitsleft')
+            unitsleft.text = '0'
+
+        #on cree un fichier txt qui contient toute les lignes du fichier xml que l'on va creer
+        fichier = open(adresse + file_name_txt, "w")
+        fichier.write(prettify(top))
+        fichier.close()
+
+        #on rajoute ' encoding="UTF-8" ' dans la premiere ligne 
+        fichier = open(adresse + file_name_txt, "r")
+        lignes= fichier.readlines()
+        fichier = open(adresse + file_name_txt, "w")
+        lignes[0] = '<?xml version="1.0" encoding="UTF-8"?>\n'
+        fichier.writelines(lignes)
+        fichier.close()
+
+        #on remplace les &lt; et les &gt; par < et > dans le fichier
+        f=open(adresse + file_name_txt,'r')
+        chaine=f.read().replace('&lt;','<')
+        chaine = chaine.replace ('&gt;','>')
+        f.close() 
+        f=open(adresse + file_name_txt,'w') 
+        f.write(chaine) 
+        f.close()
+
+        #on transforme le fichier txt en fichier xml
+        if os.path.exists(adresse + file_name_xml):
+            os.remove(adresse + file_name_xml)
+        os.rename(adresse + file_name_txt, adresse + file_name_xml)
+
+def prettify(elem):
+    """Return a pretty-printed XML string for the Element.
+    """
+    rough_string = ET.tostring(elem, 'utf-8')
+    reparsed = minidom.parseString(rough_string)
+    return reparsed.toprettyxml(indent="  ")

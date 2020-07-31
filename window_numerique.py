@@ -1,3 +1,5 @@
+''' Fenêtre qui sert à créer/modifier les question de type 'numériques' '''
+
 from PySide2.QtWidgets import QApplication, QWidget , QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox, QTextEdit, QLineEdit, QComboBox, QLabel, QCheckBox, QScrollBar, QScrollArea
 from PySide2.QtGui import QIcon, QFont
 from PySide2 import QtCore
@@ -21,15 +23,10 @@ class Window_numerique(QWidget):
         vbox.addWidget(self.groupBox)
         self.setLayout(vbox)
 
-        
- 
- 
-        #self.show()
 
     def createVBoxLayout(self):
         self.groupBox = QGroupBox("Type de question : Numérique")
         VBoxLayout = QVBoxLayout()
-        #VBoxLayout.setSpacing(50)
 
         hbox_adresse = QHBoxLayout()
         VBoxLayout.addLayout(hbox_adresse)
@@ -39,7 +36,7 @@ class Window_numerique(QWidget):
         hbox_adresse.addWidget(self.label_adresse)
 
         self.lineedit_adresse = QLineEdit(self)
-        self.lineedit_adresse.setText("Desktop\projet juillet 2020")
+        self.lineedit_adresse.setText(os.getcwd())
         hbox_adresse.addWidget(self.lineedit_adresse)
         hbox_adresse.insertSpacing(2,400)
 
@@ -67,7 +64,6 @@ class Window_numerique(QWidget):
         hbox_nom_question.addWidget(self.label_nom_question)
 
         self.lineedit_nom_question = QLineEdit(self)
-        #self.lineedit_nom_question.setFixedWidth(500)
         hbox_nom_question.addWidget(self.lineedit_nom_question)
         hbox_nom_question.insertSpacing(2,400)
         
@@ -263,7 +259,7 @@ class Window_numerique(QWidget):
         self.combobox_selection_unite = QComboBox()
         self.combobox_selection_unite.addItem("la zone de saisie")
         self.combobox_selection_unite.addItem("une sélection de choix multiple")
-        self.combobox_selection_unite.addItem("la zone de saisie")
+        self.combobox_selection_unite.addItem("un menu déroulant")
         self.combobox_selection_unite.setEnabled(False)
         hbox_selection_unites.addWidget(self.combobox_selection_unite)
         hbox_selection_unites.insertSpacing(2,700)
@@ -344,6 +340,7 @@ class Window_numerique(QWidget):
     
 
     def traitement_unite(self,index):
+        #Fonction qui permet de rendre actif/inactif certains champs en fonction du traitement de l'unité (comme sur Celene)
 
         if self.combobox_traitementunite.currentIndex() == 0:
             self.lineedit_penalite_unite.setEnabled(False)
@@ -379,7 +376,7 @@ class Window_numerique(QWidget):
             self.lineedit_coef2.setEnabled(True)
 
     def creer_question(self):
-        print("creation des lignes du xml")
+        #Fonction qui va créer un fichier xml en qui correspond à une question 'numérique' en prenant en compte toutes les infos dans les champs remplis de la fenêtre
 
         #non du fichier xml que l'on veut creer
         file_name = self.lineedit_nom_fichier.text()
@@ -563,20 +560,20 @@ class Window_numerique(QWidget):
             unitpenalty.text = penalite_unite
 
         if saisie_unite == 'texte' :
-            shownunits = SubElement(question,'shownunits')
-            shownunits.text = '0'
+            showunits = SubElement(question,'showunits')
+            showunits.text = '0'
 
         if saisie_unite == 'selection' :
-            shownunits = SubElement(question,'shownunits')
-            shownunits.text = '1'
+            showunits = SubElement(question,'showunits')
+            showunits.text = '1'
 
         if saisie_unite == 'menu' :
-            shownunits = SubElement(question,'shownunits')
-            shownunits.text = '2'
+            showunits = SubElement(question,'showunits')
+            showunits.text = '2'
 
         if traitement_unite == 'sans':
-            shownunits = SubElement(question,'shownunits')
-            shownunits.text = '3'
+            showunits = SubElement(question,'showunits')
+            showunits.text = '3'
 
         if position_unite == 'L':
             unitsleft = SubElement(question,'unitsleft')
@@ -618,11 +615,3 @@ def prettify(elem):
     rough_string = ET.tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
-
-"""myApp = QApplication(sys.argv)
-window_numerique = Window_numerique()
-
-#window_numerique.show()
-
-myApp.exec_()
-sys.exit(0)"""
